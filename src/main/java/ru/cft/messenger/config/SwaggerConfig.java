@@ -19,7 +19,7 @@ public class SwaggerConfig {
                                 .contact(
                                         new Contact()
                                                 .email("ilyagorbachev7@gmail.com")
-                                                .url("https://vk.com/ilya_gorbachev_7")
+                                                .url("https://github.com/SanJoseProjects")
                                                 .name("Gorbachev Ilya")
                                 )
                 );
