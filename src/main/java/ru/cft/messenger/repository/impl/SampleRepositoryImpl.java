@@ -4,27 +4,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import ru.cft.messenger.repository.SampleRepository;
-import ru.cft.messenger.repository.model.SampleEntity;
-
+import ru.cft.messenger.repository.UserRepository;
+import ru.cft.messenger.repository.model.User;
 import java.util.List;
 
 @Repository
-public class SampleRepositoryImpl implements SampleRepository {
+public class SampleRepositoryImpl implements UserRepository {
 
     private JdbcTemplate jdbcTemplate;
-    private RowMapper<SampleEntity> rowMapper;
+    private RowMapper<User> rowMapper;
 
     @Autowired
-    public SampleRepositoryImpl(JdbcTemplate jdbcTemplate, RowMapper<SampleEntity> rowMapper){
+    public SampleRepositoryImpl(JdbcTemplate jdbcTemplate, RowMapper<User> rowMapper){
         this.jdbcTemplate = jdbcTemplate;
         this.rowMapper = rowMapper;
     }
 
     @Override
-    public List<SampleEntity> selectAll() {
-        return jdbcTemplate.query("Select * from sample;", rowMapper);
+    public List<User> selectAll() {
+        return jdbcTemplate.query("Select * from users;", rowMapper);
     }
-
-    public void setSampleEntity(SampleEntity entity) { jdbcTemplate.query("INSERT INTO sample(id, login, name, password, surname)", rowMapper); }
 }

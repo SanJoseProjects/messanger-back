@@ -2,16 +2,15 @@ package ru.cft.messenger.repository.mapper;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
-import ru.cft.messenger.repository.model.SampleEntity;
-
+import ru.cft.messenger.repository.model.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Component
-public class SampleEntityRowMapper implements RowMapper<SampleEntity> {
+public class UserEntityRowMapper implements RowMapper<User> {
     @Override
-    public SampleEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
-        SampleEntity result = new SampleEntity();
+    public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+        User result = new User();
         result.id = rs.getLong("id");
         result.login = rs.getString("login");
         result.password = rs.getString("password");

@@ -3,11 +3,11 @@ package ru.cft.messenger.repository.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "sample")
-public class SampleEntity {
+@Table(name = "users")
+public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
 
     @Column(name = "login", nullable = false) //user email address
@@ -21,4 +21,24 @@ public class SampleEntity {
 
     @Column(name = "surname", nullable = false)
     public String surname;
+
+    public long getId() {
+        return id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
 }
