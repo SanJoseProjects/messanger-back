@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import ru.cft.messenger.repository.UserRepository;
 import ru.cft.messenger.repository.model.User;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class SampleRepositoryImpl implements UserRepository {
