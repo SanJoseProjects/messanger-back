@@ -6,23 +6,19 @@
 </head>
 <body>
 <div class="container">
-    <form class="form-signup" method="post" action="/auth/registration">
+    <form class="form-signup" method="post" action="/auth/registration" modelAttribute="userForm">
         <h2 class="form-signup-heading">Registration</h2>
         <p>
             <label for="login">Email</label>
-            <input type="text" id="login" name="login" class="form-control" placeholder="Login" required>
+            <input type="text" id="login" name="login" placeholder="Login">
         </p>
         <p>
             <label for="password">Password</label>
-            <input type="text" id="password" name="password" class="form-control" placeholder="Password" required>
+            <input type="text" id="password" name="password" placeholder="Password">
         </p>
         <p>
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" class="form-control" placeholder="Name" required>
-        </p>
-        <p>
-            <label for="surname">Surname</label>
-            <input type="text" id="surname" name="surname" class="form-control" placeholder="Surname" required>
+            <label for="name">FCs</label>
+            <input type="text" id="name" name="name" placeholder="FCs">
         </p>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
     </form>
