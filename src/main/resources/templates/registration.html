@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Sign Up</title>
+</head>
+<body>
+<div class="container">
+    <form class="form-signup" method="post" action="/auth/registration" modelAttribute="userForm">
+        <h2 class="form-signup-heading">Registration</h2>
+        <p>
+            <label for="login">Email</label>
+            <input type="text" id="login" name="login" placeholder="Login">
+        </p>
+        <p>
+            <label for="password">Password</label>
+            <input type="text" id="password" name="password" placeholder="Password">
+        </p>
+        <p>
+            <label for="name">FCs</label>
+            <input type="text" id="name" name="name" placeholder="FCs">
+        </p>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    </form>
+</div>
+</body>
+</html>

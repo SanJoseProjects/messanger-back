@@ -1,10 +1,10 @@
 package ru.cft.messenger.service;
 
-import ru.cft.messenger.repository.model.User;
+import ru.cft.messenger.repository.model.Users;
 import java.util.List;
 
 public interface SampleService {
 
-    public List<User> getAllSample();
+    public List<Users> getAllSample();
 
 }
