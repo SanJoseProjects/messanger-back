@@ -3,7 +3,7 @@ package ru.cft.messenger.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.cft.messenger.repository.UserRepository;
-import ru.cft.messenger.repository.model.User;
+import ru.cft.messenger.repository.model.Users;
 import ru.cft.messenger.service.SampleService;
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class SampleServiceImpl implements SampleService {
     }
 
     @Override
-    public List<User> getAllSample() {
+    public List<Users> getAllSample() {
         return sampleRepository.selectAll();
     }
 }
