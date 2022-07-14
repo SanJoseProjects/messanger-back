@@ -46,4 +46,13 @@ public class SampleRepositoryImpl implements UserRepository {
                 user.getLogin(), user.getPassword(), user.getName(), "USER", "ACTIVE");
     }
 
+    @Override
+    public List<Users> findByName(String name) {
+        try {
+            return jdbcTemplate.query("Select * from users WHERE name = ?;", rowMapper, name);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
+
 }
