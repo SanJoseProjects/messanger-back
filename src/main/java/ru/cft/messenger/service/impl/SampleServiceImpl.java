@@ -21,4 +21,10 @@ public class SampleServiceImpl implements SampleService {
     public List<Users> getAllSample() {
         return sampleRepository.selectAll();
     }
+
+    @Override
+    public Users findByLogin(String login) { return sampleRepository.findByLogin(login); }
+
+    @Override
+    public List<Users> findByName(String name) { return sampleRepository.findByName(name); }
 }
