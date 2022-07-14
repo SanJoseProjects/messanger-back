@@ -41,7 +41,7 @@ public class RegistrationController {
             return modelAndView;
         }
 
-        modelAndView.setViewName("redirect:/api/login");
+        modelAndView.setViewName("redirect:/auth/login");
         return modelAndView;
     }
 }
