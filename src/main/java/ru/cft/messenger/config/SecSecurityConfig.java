@@ -34,8 +34,6 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 //Доступ только для не зарегистрированных пользователей
                     .antMatchers("/auth/registration").not().fullyAuthenticated()
-                //Все остальные страницы требуют аутентификации
-                .anyRequest().authenticated()
                 .and()
                 //Настройка для входа в систему
                     .formLogin()
