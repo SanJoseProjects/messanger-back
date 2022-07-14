@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import ru.cft.messenger.repository.UserRepository;
 import ru.cft.messenger.repository.model.Role;
 import ru.cft.messenger.repository.model.Users;
-
 import java.util.List;
 
 @Service("userDetailsServiceImpl")
