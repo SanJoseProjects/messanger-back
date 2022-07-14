@@ -5,36 +5,44 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import ru.cft.messenger.repository.model.Users;
 import ru.cft.messenger.security.UserDetailsServiceImpl;
 
-import javax.validation.Valid;
-
-@Controller
+@RestController
 @RequestMapping("auth")
 public class RegistrationController {
 
-    @Autowired
     private UserDetailsServiceImpl userService;
 
-    @GetMapping("/registration")
-    public String registration(Model model) {
-        model.addAttribute("userForm", new Users());
+    @Autowired
+    public RegistrationController(UserDetailsServiceImpl userDetailsService) {
+        this.userService = userDetailsService;
+    }
 
-        return "registration";
+    @GetMapping("/registration")
+    public ModelAndView registration(Model model) {
+        model.addAttribute("userForm", new Users());
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("registration");
+        return modelAndView;
     }
 
     @PostMapping("/registration")
-    public String addUser(@RequestBody @ModelAttribute("userForm") Users userForm, BindingResult bindingResult, Model model) {
+    public ModelAndView addUser(@RequestBody @ModelAttribute("userForm") Users userForm, BindingResult bindingResult, Model model) {
+        ModelAndView modelAndView = new ModelAndView();
 
         if (bindingResult.hasErrors()) {
-            return "registration";
+            modelAndView.setViewName("registration");
+            return modelAndView;
         }
         if (!userService.saveUser(userForm)){
             model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
-            return "registration";
+            modelAndView.setViewName("registration");
+            return modelAndView;
         }
 
-        return "redirect:/auth/login";
+        modelAndView.setViewName("redirect:/auth/login");
+        return modelAndView;
     }
 }

@@ -1,20 +1,25 @@
 package ru.cft.messenger.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@RestController
 @RequestMapping("auth")
 public class AuthController {
 
     @GetMapping("login")
-    public String getLoginPage() {
-        return "login";
+    public ModelAndView getLoginPage() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login");
+        return modelAndView;
     }
 
     @GetMapping("swagger-ui")
-    public String getSwaggerUIPage() {
-        return "swagger-ui.html";
+    public ModelAndView getSwaggerUIPage() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("swagger-ui.html");
+        return modelAndView;
     }
 }
