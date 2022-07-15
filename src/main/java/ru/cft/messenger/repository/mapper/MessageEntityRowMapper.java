@@ -3,9 +3,6 @@ package ru.cft.messenger.repository.mapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 import ru.cft.messenger.repository.model.Message;
-import ru.cft.messenger.repository.model.Role;
-import ru.cft.messenger.repository.model.Status;
-import ru.cft.messenger.repository.model.Users;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

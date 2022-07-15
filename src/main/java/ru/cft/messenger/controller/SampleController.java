@@ -21,7 +21,7 @@ public class SampleController {
         this.sampleService = sampleService;
     }
 
-    @GetMapping("/get/all")
+    @GetMapping("/users/get/all")
     public List<Users> getAll() {
         return sampleService.getAllSample();
     }
@@ -32,6 +32,6 @@ public class SampleController {
     @GetMapping("/users/get/by_name/{name}")
     public List<Users> getUserByName(@PathVariable("name") String name) { return sampleService.findByName(name); }
 
-    @GetMapping("/users/get/by_id/{id}")
+    @GetMapping("/user/get/by_id/{id}")
     public Users getUserById(@PathVariable("id") Long userId) { return sampleService.findById(userId); }
 }
