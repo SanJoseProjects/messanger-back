@@ -9,4 +9,5 @@ public interface SampleService {
 
     Users findByLogin(String login);
     List<Users> findByName(String name);
+    Users findById(Long userId);
 }

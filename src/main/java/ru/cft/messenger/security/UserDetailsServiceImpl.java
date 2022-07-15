@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.cft.messenger.repository.UserRepository;
 import ru.cft.messenger.repository.model.Role;
+import ru.cft.messenger.repository.model.Status;
 import ru.cft.messenger.repository.model.Users;
 import java.util.List;
 
@@ -49,6 +50,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
 
         user.setRole(Role.USER);
+        user.setStatus(Status.ACTIVE);
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
