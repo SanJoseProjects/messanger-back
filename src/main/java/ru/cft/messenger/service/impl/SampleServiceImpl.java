@@ -27,4 +27,7 @@ public class SampleServiceImpl implements SampleService {
 
     @Override
     public List<Users> findByName(String name) { return sampleRepository.findByName(name); }
+
+    @Override
+    public Users findById(Long userId) { return sampleRepository.findById(userId); }
 }

@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import ru.cft.messenger.repository.UserRepository;
+import ru.cft.messenger.repository.model.Role;
+import ru.cft.messenger.repository.model.Status;
 import ru.cft.messenger.repository.model.Users;
 import java.util.List;
 
@@ -23,7 +25,18 @@ public class SampleRepositoryImpl implements UserRepository {
 
     @Override
     public List<Users> selectAll() {
-        return jdbcTemplate.query("Select * from users;", rowMapper);
+        try {
+            return jdbcTemplate.query("Select id,login,name from users;", (rs, rowNum) -> {
+                Users user = new Users();
+                user.setId(rs.getLong("id"));
+                user.setLogin(rs.getString("login"));
+                user.setName(rs.getString("name"));
+
+                return user;
+            });
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
     @Override
@@ -37,22 +50,42 @@ public class SampleRepositoryImpl implements UserRepository {
 
     @Override
     public Users findById(Long userId) {
-        return jdbcTemplate.queryForObject("Select * from users WHERE id = ?;", rowMapper, userId);
-    }
-
-    @Override
-    public void save(Users user) {
-        jdbcTemplate.update("INSERT INTO users (login, password, name, role, status) VALUES (?, ?, ?, ?, ?)",
-                user.getLogin(), user.getPassword(), user.getName(), "USER", "ACTIVE");
-    }
-
-    @Override
-    public List<Users> findByName(String name) {
         try {
-            return jdbcTemplate.query("Select * from users WHERE name = ?;", rowMapper, name);
+            return jdbcTemplate.queryForObject("Select id,login,name from users WHERE id = ?;", (rs, rowNum) -> {
+                Users user = new Users();
+                user.setId(rs.getLong("id"));
+                user.setLogin(rs.getString("login"));
+                user.setName(rs.getString("name"));
+
+                return user;
+            }, userId);
         } catch (EmptyResultDataAccessException e) {
             return null;
         }
     }
 
+    @Override
+    public void save(Users user) {
+        String role = user.getRole() == Role.USER ? "USER" : "ADMIN";
+        String status = user.getStatus() == Status.ACTIVE ? "ACTIVE" : "BANNED";
+
+        jdbcTemplate.update("INSERT INTO users (login, password, name, role, status) VALUES (?, ?, ?, ?, ?)",
+                user.getLogin(), user.getPassword(), user.getName(), role, status);
+    }
+
+    @Override
+    public List<Users> findByName(String name) {
+        try {
+            return jdbcTemplate.query("Select id,login,name from users WHERE name = ?;", (rs, rowNum) -> {
+                Users user = new Users();
+                user.setId(rs.getLong("id"));
+                user.setLogin(rs.getString("login"));
+                user.setName(rs.getString("name"));
+
+                return user;
+            }, name);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
 }
