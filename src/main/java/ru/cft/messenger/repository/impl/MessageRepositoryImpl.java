@@ -6,7 +6,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import ru.cft.messenger.repository.MessageRepository;
 import ru.cft.messenger.repository.model.Message;
-import ru.cft.messenger.repository.model.Users;
 
 @Repository
 public class MessageRepositoryImpl implements MessageRepository {
